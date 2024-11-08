@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Buzzword Generator</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTX9KS5EYJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PTX9KS5EYJ');
+    </script>
+
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            text-align: center;
+            background: #1f1f2e;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+            border: 2px solid #3f51b5;
+            width: 100%;
+            max-width: 600px;
+        }
+        h1 {
+            color: #ff9800;
+            font-size: 1.8em;
+        }
+        #output {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #3f51b5;
+            border-radius: 10px;
+            background: #30344b;
+            font-size: 1.1em;
+            color: #76ff03;
+            word-wrap: break-word;
+        }
+        button {
+            padding: 12px 24px;
+            background-color: #3f51b5;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.2s;
+            width: 100%;
+            max-width: 200px;
+        }
+        button:hover {
+            background-color: #76ff03;
+            color: #121212;
+            transform: translateY(-3px);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: #1f1f2e;
+            border: 2px solid #3f51b5;
+            color: #e0e0e0;
+            max-width: 100%;
+            overflow-x: auto;
+        }
+        th, td {
+            border: 1px solid #30344b;
+            padding: 10px;
+            vertical-align: top;
+            font-size: 0.9em;
+        }
+        th {
+            background-color: #3f51b5;
+            color: #ffffff;
+        }
+        td {
+            white-space: pre-wrap; /* Ensures each item appears on a new line */
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 1em;
+        }
+        footer a {
+            color: #ff9800;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .tagline {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #ff9800;
+            text-align: center;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.5em;
+            }
+            #output {
+                font-size: 1em;
+            }
+            button {
+                font-size: 0.9em;
+                max-width: 100%;
+            }
+            th, td {
+                font-size: 0.8em;
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tagline">
+        Command the room and elevate your reputation with AI products. Impress your peers and shine at your next big meeting...
+    </div>
+
+    <div class="container">
+        <h1>AI Buzzword Generator</h1>
+        <div id="output">Press the button to generate AI jargon</div>
+        <button onclick="generateBuzzword()">Generate</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Key Terms</th>
+                <th>Adjectives/Modifiers</th>
+                <th>Common Phrases</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="keyTermsList"></td>
+                <td id="adjectivesList"></td>
+                <td id="phrasesList"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <footer>
+        Created by <a href="https://x.com/StuffTechTanmay" target="_blank">Tanmay Deshpande</a>
+    </footer>
+
+    <script>
+        const keyTerms = [
+            "Quantum-driven", 
+            "Cognitive computing", 
+            "Neural enhancement", 
+            "Autonomous decision-making", 
+            "Hyperparameter optimization", 
+            "Self-learning systems", 
+            "Data-centric models", 
+            "AI-first architecture", 
+            "Multi-layered algorithms", 
+            "Federated learning protocols", 
+            "Ethical alignment", 
+            "Explainable AI (XAI)", 
+            "Generative adversarial networks (GANs)", 
+            "Predictive analytics", 
+            "Transfer learning", 
+            "Zero-shot learning", 
+            "Natural language processing (NLP)", 
+            "Deep learning paradigms", 
+            "Reinforcement learning loops", 
+            "AI governance frameworks", 
+            "Scalable AI pipelines", 
+            "Synthetic data generation", 
+            "Robust model interpretability", 
+            "Vision-based AI", 
+            "Pre-trained transformers", 
+            "Data lake integration", 
+            "Advanced feature engineering", 
+            "Model drift correction", 
+            "Multi-modal data fusion", 
+            "Distributed machine learning", 
+            "Human-in-the-loop (HITL)", 
+            "Continuous deployment of ML", 
+            "Cloud-native AI solutions", 
+            "Bayesian inference", 
+            "Augmented intelligence", 
+            "Semi-supervised learning", 
+            "High-dimensional data synthesis", 
+            "Edge computing synergy", 
+            "AI-driven anomaly detection", 
+            "Behavioral analytics", 
+            "Meta-learning strategies", 
+            "Data augmentation techniques", 
+            "Semantic understanding", 
+            "Swarm intelligence", 
+            "Knowledge graph embeddings", 
+            "Dynamic AI orchestration", 
+            "Privacy-preserving AI", 
+            "Automated model tuning", 
+            "Cognitive AI workflows", 
+            "Embedded AI processors", 
+            "Cross-domain adaptability", 
+            "Spatiotemporal analysis",
+            "Smart contract integration",
+            "Autonomous systems management",
+            "Neural architecture search",
+            "Algorithmic transparency",
+            "AI-powered robotics",
+            "Virtual agent collaboration",
+            "Scalable inference engines",
+            "Natural language generation (NLG)",
+            "Algorithmic trading models",
+            "Predictive maintenance solutions",
+            "Cognitive automation",
+            "Agentic Framework"
+        ];
+
+        const supportingAdjectives = [
+            "Seamless", "Ultra-efficient", "Disruptive", "Proactive", "Scalable", 
+            "High-performance", "Future-proof", "Real-time", "Hybrid", "Intelligent",
+            "Strategic", "Adaptive", "Visionary", "Innovative", "Cutting-edge",
+            "Groundbreaking", "Advanced", "Robust", "Automated", "Sophisticated",
+            "Efficient", "Dynamic", "Customizable", "Responsive", "Agile",
+            "Comprehensive", "Intuitive", "Transformative", "Revolutionary"
+        ];
+
+        const commonPhrases = [
+            "leveraging quantum-driven neural networks for robust data analysis",
+            "autonomously improving through multi-modal data fusion",
+            "pioneering ethical alignment within cognitive AI frameworks",
+            "enhancing explainable AI with cross-domain adaptability",
+            "harnessing the power of scalable data models",
+            "deploying cloud-native solutions for enhanced efficiency",
+            "streamlining workflows with cognitive automation",
+            "driving innovation through advanced feature engineering",
+            "bridging data silos with federated learning protocols",
+            "optimizing decision-making with dynamic AI orchestration",
+            "implementing privacy-preserving AI to ensure data security",
+            "revolutionizing analytics through real-time edge processing",
+            "automating complex tasks with human-in-the-loop strategies",
+            "synthesizing high-dimensional data for predictive insights",
+            "empowering cross-functional teams with AI-first architecture",
+            "scaling operations with distributed machine learning frameworks",
+            "enhancing user experience through adaptive NLP models",
+            "integrating AI governance for ethical decision frameworks",
+            "transforming traditional systems with robust AI pipelines",
+            "leveraging semantic understanding for deeper intelligence",
+            "deploying agent-based simulations for strategic forecasting",
+            "building autonomous solutions with cutting-edge AI tools",
+            "utilizing synthetic data to improve model performance",
+            "creating self-optimizing models with meta-learning",
+            "facilitating seamless integrations with advanced automation",
+            "orchestrating AI-driven customer interaction enhancements"
+        ];
+
+        function generateBuzzword() {
+            const randomKeyTerm = keyTerms[Math.floor(Math.random() * keyTerms.length)];
+            const randomAdjective = supportingAdjectives[Math.floor(Math.random() * supportingAdjectives.length)];
+            const randomPhrase = commonPhrases[Math.floor(Math.random() * commonPhrases.length)];
+
+            const buzzword = `${randomAdjective} ${randomKeyTerm} ${randomPhrase}`;
+            document.getElementById('output').innerText = buzzword;
+        }
+
+        function displayLists() {
+            document.getElementById('keyTermsList').innerText = keyTerms.join("\n");
+            document.getElementById('adjectivesList').innerText = supportingAdjectives.join("\n");
+            document.getElementById('phrasesList').innerText = commonPhrases.join("\n");
+        }
+
+        // Display the lists when the page loads
+        window.onload = displayLists;
+    </script>
+</body>
+</html>
